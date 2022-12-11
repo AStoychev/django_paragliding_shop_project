@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <section id="catalogPage">
+   {% if profile.username %}
+    <div class="btn-group">
+        <a id="detailsButton"  href="{% url 'instruments add' %}" >Add Instruments</a>
+    </div>
+    {% endif %}
+        {% if instruments %}
+            <h1>All Albums</h1>
+            {% for instrument in instruments %}
+                <div class="card-box">
+                    <img src="{{ instrument.image_url }}" alt="{{ album.album_name }}">
+                    <div>
+                        <div class="text-center">
+                            <p class="name">Manufacturer: {{ instrument.manufacturer }}</p>
+                            <p class="artist">Type: {{ instrument.type }}</p>
+                            <p class="price">Price: ${{ instrument.price|floatformat:2 }}</p>
+                        </div>
+                        <div class="btn-group">
+                            <a id="detailsButton" href="{% url 'instruments details' pk=instrument.pk %}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+        {% else %}
+            <p>No Instruments in Shop!</p>
+        {% endif %}
+
+
+</section>
+
+{% endblock %}

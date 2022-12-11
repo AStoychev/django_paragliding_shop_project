@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    body {background-image: url({% static 'images/background-paraglider.jpg' %});background-repeat: no-repeat;background-attachment: fixed;
+        background-size: 100%;border-top-width: 10px; top: 10px;}
+</style>
+
+{% if is_owner or is_superuser %}
+
+    <div class="container-inline">
+        <section id="welcomePage">
+            <div id="welcome-message">
+                <h1 class="welcome-message">Welcome Free Man!</h1>
+                <h1 class="welcome-message">Take a different.</h1>
+                <h1 class="welcome-message">Route to where you want to go.</h1>
+            <div class="music-img">
+            </div>
+            </div>
+
+        </section>
+    <!-- Registration -->
+        <section id="registerPage">
+            <form method="post" action="{% url 'edit user' pk=object.pk %}" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Edit Profile</legend>
+                    <h1 id="register-info" >First Name{{ form.first_name }}</h1>
+                    {% if form.errors.first_name %}
+                        <h1 style="color: red; font-size: 18px">Name contains forbidden characters!</h1>
+                    {% endif %}
+                    <h1 id="register-info" >Last Name{{ form.last_name }}</h1>
+                    {% if form.errors.last_name %}
+                        <h1 style="color: red; font-size: 18px">Name contains forbidden characters!</h1>
+                    {% endif %}
+                    <h1 id="register-info" >Email{{ form.email }}</h1>
+                    {% if form.errors.email %}
+                        <h1 style="color: red; font-size: 18px">Email already exist!</h1>
+                    {% endif %}
+                    <h1 id="register-info" >Country{{ form.country }}</h1>
+                    <h1 id="register-info" >Age{{ form.age }}</h1>
+                    <h1 id="register-image-edit" >Image{{ form.image }}</h1>
+                    {% if form.errors.image %}
+                        <h1 style="color: red; font-size: 18px">Image must be under 1.5 MB!</h1>
+                    {% endif %}
+                    <h1 id="register-info" >Gender{{ form.gender }}</h1>
+
+                    <button id="login-register-btn" type="submit" class="register">Edit</button>
+                    {% csrf_token %}
+                </fieldset>
+            </form>
+        </section>
+    </div>
+
+{% else %}
+    <h1 style="color: #000000; font-size: 51px">You are not authenticated!</h1>
+{% endif %}
+
+{% endblock %}

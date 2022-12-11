@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <section id="catalogPage">
+    {% if profile.username %}
+    <div class="btn-group">
+        <a id="detailsButton"  href="{% url 'reserves add' %}" >Add Reserves</a>
+    </div>
+    {% endif %}
+        {% if reserves %}
+            <h1>All Albums</h1>
+            {% for reserve in reserves %}
+                <div class="card-box">
+                    <img src="{{ reserve.image_url }}" alt="{{ album.album_name }}">
+                    <div>
+                        <div class="text-center">
+                            <p class="name">Manufacturer: {{ reserve.manufacturer }}</p>
+                            <p class="artist">Model: {{ reserve.model }}</p>
+                            <p class="price">Price: ${{ reserve.price|floatformat:2 }}</p>
+                        </div>
+                        <div class="btn-group">
+                            <a id="detailsButton" href="{% url 'reserves details' pk=reserve.pk %}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+        {% else %}
+            <p>No Reserves in Shop!</p>
+        {% endif %}
+
+
+</section>
+
+{% endblock %}

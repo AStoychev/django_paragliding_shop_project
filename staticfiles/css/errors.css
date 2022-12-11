@@ -1,0 +1,25 @@
+#errorMessage {
+    position: absolute;
+    left: 32%;
+    top: 10%;
+    font-size: 50px;
+    color: rebeccapurple;
+
+}
+
+#back-to-profile {
+    position: absolute;
+    left: 42%;
+    top: 26%;
+    width: 100px;
+    padding: 3px;
+}
+
+#backToHomePage {
+    position: absolute;
+    left: 43%;
+    top: 37%;
+    font-size: 19px;
+    color: #000000;
+    background-color: #baffb8;
+}

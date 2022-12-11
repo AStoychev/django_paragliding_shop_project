@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div>
+    <style>
+        body {background-color: #ceffee; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; top: 10px;}
+    </style>
+
+<section id="detailsPage">
+<link rel="stylesheet" type="text/css" href="{% static 'css/edit-delete-profile.css' %}">
+    <div class="wrapper">
+        <div class="profilePage">
+            {% if user_products %}
+                {% for product in user_products %}
+                    {{ product }}
+                {% endfor %}
+
+            {% else %}
+                You don't have any orders yet.
+                You order is {{ start_price }}
+            {% endif %}
+
+        </div>
+
+        <div class="profileText">
+
+        </div>
+
+    </div>
+</section>
+</div>
+
+{% endblock %}

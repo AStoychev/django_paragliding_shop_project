@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
+    <div id="detailsEquipment" class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="card p-4">
+        <div class=" image d-flex flex-column justify-content-center align-items-center">
+        <button class="btn btn-secondary">
+            <img {{ current_harness.image_url }} height="100" width="100"  alt="" src="{{ current_harness.image_url }}"/>
+        </button>
+        <span id="type" class="name mt-3">{{ current_harness.manufacturer }}</span>
+            <br><br>
+            <span id="type" class="idd">{{ current_harness.model }}</span>
+            {% if profile.is_superuser or profile.is_staff %}
+                <span id="visibleOwner">
+                    <a id="listUser" href="{% url 'details user' pk=current_harness.user_id %}">Owner: {{ current_harness.user }}</a>
+                </span>
+            {% endif %}
+
+            <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+                 <span class="number">{{ current_harness.price|floatformat:2 }}
+                     <span class="follow">$</span>
+                 </span>
+            </div>
+            <div class="text mt-3">
+                <span>Category: {{ current_harness.category }}
+                            <br><br>
+                    Year: {{ current_harness.year }}
+                            <br><br>
+                    Condition: {{ current_harness.condition }}
+                            <br><br>
+                </span>
+            </div>
+        </div>
+        </div>
+
+     {% if profile.username %}
+        {% if owner or profile.is_superuser or profile.is_staff%}
+            <div class="btn-group">
+                <a id="detailsButton" href="{% url 'harnesses edit' pk=current_harness.pk %}">Edit</a>
+                <a id="detailsButton" href="{% url 'harnesses delete' pk=current_harness.pk %}">Delete</a>
+            </div>
+
+        {% else %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/popup.css' %}">
+
+            <div class="popup" onclick="myFunction()" >
+                <button id="buyButton" type="submit">Buy</button>
+                <span class="popuptext" id="myPopup">You buy {{ current_harness.manufacturer }} {{ current_harness.model }}</span>
+                <script src="{% static 'src/popup.js' %}"></script>
+            </div>
+            {% endif %}
+
+    {% else %}
+         {% csrf_token %}
+        <div class="btn-group">
+            <h1 style="padding-right: 94px; color: black">If you want to buy please  <a style="font-size: 30px" id="log-reg" href="{% url 'login user' %}">Log in</a></h1>
+        </div>
+
+    {% endif %}
+</div>
+{% endblock %}

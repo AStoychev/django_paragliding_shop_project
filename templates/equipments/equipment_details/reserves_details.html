@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
+    <div id="detailsEquipment" class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="card p-4">
+        <div class=" image d-flex flex-column justify-content-center align-items-center">
+        <button class="btn btn-secondary">
+            <img {{ current_reserves.image_url }} height="100" width="100"  alt="" src="{{ current_reserves.image_url }}"/>
+        </button>
+        <span id="type" class="name mt-3">{{ current_reserves.manufacturer }}</span>
+            <br><br>
+            <span id="type" class="idd">{{ current_reserves.model }}</span>
+            {% if profile.is_superuser or profile.is_staff %}
+                <span id="visibleOwner">
+                    <a id="listUser" href="{% url 'details user' pk=current_reserves.user_id %}">Owner: {{ current_reserves.user }}</a>
+                </span>
+            {% endif %}
+
+            <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+                 <span class="number">{{ current_reserves.price|floatformat:2 }}
+                     <span class="follow">$</span>
+                 </span>
+            </div>
+            <div class="text mt-3">
+                <span>Type: {{ current_reserves.type }}
+                            <br><br>
+                    Year: {{ current_reserves.year }}
+                            <br><br>
+                    Condition: {{ current_reserves.condition }}
+                            <br><br>
+                </span>
+            </div>
+        </div>
+        </div>
+     {% if profile.username %}
+        {% if owner or profile.is_superuser or profile.is_staff %}
+            <div class="btn-group">
+                <a id="detailsButton" href="{% url 'reserves edit' pk=current_reserves.pk %}">Edit</a>
+                <a id="detailsButton" href="{% url 'reserves delete' pk=current_reserves.pk %}">Delete</a>
+            </div>
+        {% else %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/popup.css' %}">
+
+            <div class="popup" onclick="myFunction()" >
+                <button id="buyButton" type="submit">Buy</button>
+                <span class="popuptext" id="myPopup">You buy {{ current_reserves.manufacturer }} {{ current_reserves.model }}</span>
+                <script src="{% static 'src/popup.js' %}"></script>
+            </div>
+            {% endif %}
+
+    {% else %}
+         {% csrf_token %}
+        <div class="btn-group">
+            <h1 style="padding-right: 94px; color: black">If you want to buy please  <a style="font-size: 30px" id="log-reg" href="{% url 'login user' %}">Log in</a></h1>
+        </div>
+
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <body> </body>
+<div id="slideShow" class="slideshow-container">
+
+    <div class="mySlides fade">
+         <form method="post" action="{% url 'wings' %}">
+        <div class="container">
+            <img id="slideImage" src="{% static 'images/slideshow/1.jpg' %}" style="width:100%" alt="">
+            <div class="container-absolute">
+                <img class="black-field" src="{% static 'images/field.jpg' %}" style="width: 100%" alt="">
+            </div>
+            <div class="black-field-first">TOUCH THE SKY</div>
+            <button class="fast-button-first" type="submit" onclick="{% url 'wings' %}">SHOP WINGS</button>
+            {% csrf_token %}
+        </div>
+         </form>
+    </div>
+
+    <div class="mySlides fade">
+         <form method="post" action="{% url 'harnesses' %}">
+        <div class="container">
+            <img id="slideImage" src="{% static 'images/slideshow/2.jpg' %}" style="width:100%" alt="">
+            <div class="container-absolute">
+                <img class="black-field" src="{% static 'images/field.jpg' %}" style="width: 100%" alt="">
+            </div>
+            <div class="black-field-second">ENJOY THE FLIGHT</div>
+            <button class="fast-button-second" type="submit" onclick="{% url 'harnesses' %}">SHOP HARNESSES</button>
+            {% csrf_token %}
+        </div>
+         </form>
+    </div>
+
+</div>
+    {% csrf_token %}
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+    <script src="{% static 'src/slideshow.js' %}" type='module'> </script>
+
+{% endblock %}

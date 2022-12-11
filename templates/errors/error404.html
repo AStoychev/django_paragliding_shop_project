@@ -1,0 +1,22 @@
+{% load static %}
+{% block content %}
+<title>Page Not Found</title>
+    <style>
+        body {background-color: #ceffee;background-image: url({% static 'images/slideshow/4.jpg' %});
+            background-repeat: no-repeat;background-size: cover;}
+    </style>
+
+    <section id="detailsPage">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/errors.css' %}">
+        <div class="wrapper">
+            <div class="profileText">
+                <h1 id="errorMessage">Page not found Error 404</h1>
+                {% csrf_token %}
+                <a id="back-to-profile" href="{% url 'index' %}">
+                    <img id="back-to-profile" class="delete-img" src="{% static 'images/left.png' %}" alt="delete button">
+                </a>
+                <h1 id="backToHomePage">Back to Home Page</h1>
+            </div>
+        </div>
+    </section>
+{% endblock %}

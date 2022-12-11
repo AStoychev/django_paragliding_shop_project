@@ -1,0 +1,76 @@
+{% load static %}
+{% load unicorn %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Like The Birth</title>
+    {% unicorn_scripts %}
+
+</head>
+
+<body>
+
+<nav>
+    <ul class="first">
+        <li class="img">
+            <a href="{% url 'index' %}"></a>
+            <img src="{% static 'images/logo.png' %}" alt="paragliding">
+            <a class="logo-birds" href="{% url 'index' %}">Like The Birds</a>
+        </li>
+    </ul>
+    <ul class="second">
+            {% if request.user.is_authenticated %}
+                <li class="users">
+                    <div class="dropdown">
+                      <button class="dropbtn">Profile</button>
+                      <div class="dropdown-content">
+                            <a href="{% url 'details user' pk=request.user.pk %}">Details</a>
+                            <a href="{% url 'basket' pk=request.user.pk %}">Basket</a>
+                            <a href="{% url 'all users' %}">All Users</a>
+                            <a href="{% url 'logout user' %}">Log Out</a>
+                      </div>
+                    </div>
+
+                </li>
+            {% else %}
+                <li class="users">
+                    <a class="sign-in" href="{% url 'login user' %}">Log In</a>
+                    <a class="register" href="{% url 'register user' %}">Register</a>
+                </li>
+            {% endif %}
+            {% csrf_token %}
+    </ul>
+        <form class="submit-form">
+            {% csrf_token %}
+            <label class="submit-form">
+                <input class="submit-search" type="search" placeholder="Search..." name="searched">
+                <button class="submit-btn" type="submit">Submit</button>
+            </label>
+        </form>
+
+</nav>
+
+<div class="owl-stage-outer">
+    <div class="navigation-bar">
+        <li class="items">
+            <a class="nav1" href="{% url 'wings' %}">Wings</a>
+            <a class="nav2" href="{% url 'harnesses' %}">Harness</a>
+            <a class="nav3" href="{% url 'reserves' %}">Reserves</a>
+            <a class="nav4" href="{% url 'instruments' %}">Instruments</a>
+            <a class="nav5" href="{% url 'helmets' %}">Helmets</a>
+        </li>
+    </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+<footer id="footer">
+    <div>Like The Birth Paragliding. Test Project</div>
+</footer>
+
+</body>
+</html>

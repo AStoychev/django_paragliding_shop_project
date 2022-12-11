@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+ <style>
+        body {background-color: #ceffee;background-image: url({% static 'images/background-paraglider.jpg' %});
+            background-repeat: no-repeat;background-size: cover;overflow-x: hidden;}
+</style>
+
+{% if owner or profile.is_superuser or profile.is_staff %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+    <h1 id="addWing">Edit Instruments</h1>
+    <div class="form">
+        <form method="POST" action="{% url 'instruments edit' pk=current_instruments.pk %}">
+            {{ form }}
+            {% csrf_token %}
+            <input type="submit" value="Create">
+        </form>
+    </div>
+
+{% else %}
+    <h1>You are not authenticated!</h1>
+{% endif %}
+
+
+{% endblock %}

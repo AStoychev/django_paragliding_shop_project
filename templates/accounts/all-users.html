@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        body {background-color: #ceffee; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;top: 10px;}
+    </style>
+
+<section id="detailsPage">
+<link rel="stylesheet" type="text/css" href="{% static 'css/edit-delete-profile.css' %}">
+    <div class="wrapper">
+    <h1>All users</h1>
+
+    <div id="pageStyle" class="page">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% else %}
+            <a id="noPage">First</a>
+            <a id="noPage">Previous</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% else %}
+            <a id="noPage">Next</a>
+            <a id="noPage">Last</a>
+        {% endif %}
+    </div>
+
+        {% for user in object_list %}
+            <ul id="allUsers">
+                <link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
+                <a id="listUser" href="{% url 'details user' pk=user.pk %}"><li>{{ user.username }}</li></a>
+            </ul>
+        {% endfor %}
+        {% csrf_token %}
+
+
+        <div class="profileText">
+           <h1></h1>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

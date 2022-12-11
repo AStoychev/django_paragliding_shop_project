@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <section id="catalogPage">
+   {% if profile.username %}
+    <div class="btn-group">
+        <a id="detailsButton"  href="{% url 'helmets add' %}" >Add Helmet</a>
+    </div>
+    {% endif %}
+        {% if helmets %}
+            <h1>All Albums</h1>
+            {% for helmet in helmets %}
+                <div class="card-box">
+                    <img src="{{ helmet.image_url }}" alt="{{ album.album_name }}">
+                    <div>
+                        <div class="text-center">
+                            <p class="name">Manufacturer: {{ helmet.manufacturer }}</p>
+                            <p class="artist">Visor: {{ helmet.visor }}</p>
+                            <p class="price">Price: ${{ helmet.price|floatformat:2 }}</p>
+                        </div>
+                         <div class="btn-group">
+                            <a id="detailsButton" href="{% url 'helmets details' pk=helmet.pk %}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+        {% else %}
+            <p>No Helmets in Shop!</p>
+        {% endif %}
+
+
+</section>
+
+{% endblock %}

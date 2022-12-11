@@ -1,0 +1,163 @@
+#detailsEquipment {
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+}
+
+body {
+    background-color: #ceffee;
+}
+
+.card {
+    width: 450px;
+    height: 490px;
+    border-style: none;
+    /*background-color: #6fbefa;*/
+    border-radius: 15px;
+    box-shadow: 0 0 30px 0;
+    cursor: auto;
+    transition: all 0.5s;
+}
+
+.image img {
+    transition: all 0.5s
+}
+
+.card:hover .image img {
+    transform: scale(2.5)
+}
+
+.btn {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    background-color: #ceffee;
+    border: none;
+}
+
+.name {
+    position: absolute;
+    left: 255px;
+    top: 50px;
+    font-size: 28px;
+    font-weight: bold
+}
+
+.idd {
+    position: absolute;
+    left: 260px;
+    top: 100px;
+    font-size: 21px;
+    font-weight: 600
+}
+
+.idd1 {
+    font-size: 12px
+}
+
+.number {
+    position: relative;
+    top: 35px;
+    left: 5px;
+    font-size: 28px;
+    font-weight: bold
+}
+
+.follow {
+    font-size: 18px;
+    font-weight: 500;
+    color: #444444
+}
+
+.btn1 {
+    position: relative;
+    left: 65px;
+    bottom: -3px;
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color: #a9d039;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 12px;
+}
+
+.btn1:hover {
+    background-color: darkred;
+    color: white;
+}
+
+.text span {
+    position: relative;
+    top: 51px;
+    left: 5px;
+    font-size: 17px;
+    color: #545454;
+    font-weight: 500
+}
+
+.icons i {
+    font-size: 19px
+}
+
+#allUsers {
+    padding-left: 400px;
+    padding-bottom: 30px;
+    font-size: 30px;
+}
+
+#listUser {
+    color: rebeccapurple;
+}
+
+#listUser:hover {
+    color: rebeccapurple;
+    text-decoration: underline;
+}
+
+#visibleOwner {
+    position: relative;
+    left: 50%;
+}
+
+#buyButton {
+    position: relative;
+    left: 190px;
+    background-color: #a9d039;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#buyButton:hover {
+    background-color: darkred;
+    color: white;
+}
+
+#buyButton:disabled,
+#buyButton[disabled]
+{
+    background-color: darkred;
+    color: white;
+    cursor: none;
+}
+
+hr .new1 {
+    border: 1px solid
+}
+
+.join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold
+}
+
+.date {
+    background-color: #ccc
+}

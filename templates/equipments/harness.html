@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        body {background-color: #ceffee;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;top: 10px;}
+    </style>
+
+    <section id="catalogPage">
+    {% if profile.username %}
+    <div class="btn-group">
+        <a id="detailsButton"  href="{% url 'harnesses add' %}" >Add Harness</a>
+    </div>
+    {% endif %}
+
+        {% if harnesses %}
+            <h1>All Albums</h1>
+            {% for harness in harnesses %}
+                <div class="card-box">
+                    <img src="{{ harness.image_url }}" alt="{{ album.album_name }}">
+                    <div>
+                        <div class="text-center">
+                            <p class="name">Manufacturer: {{ harness.manufacturer }}</p>
+                            <p class="artist">Model: {{ harness.model }}</p>
+                            <p class="price">Price: ${{ harness.price|floatformat:2 }}</p>
+                        </div>
+                        <div class="btn-group">
+                            <a id="detailsButton" href="{% url 'harnesses details' pk=harness.pk %}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+        {% else %}
+            <p>No Harness in Shop!</p>
+        {% endif %}
+
+
+</section>
+
+{% endblock %}

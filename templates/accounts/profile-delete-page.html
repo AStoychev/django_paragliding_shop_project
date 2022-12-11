@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if is_owner or is_superuser %}
+
+    <section id="detailsPage">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/edit-delete-profile.css' %}">
+        <div class="wrapper">
+            <div class="profileText">
+                        <form method="post" action="{% url 'delete user' pk=object.pk %}">
+                        <h1>Are you sure you want to delete {{ object.username }} ?</h1>
+                        <button id="delete-profile-buttons" type="submit" >Delete</button>
+                        {% csrf_token %}
+                        </form>
+                <a id="back-to-profile" href="{% url 'details user' pk=object.pk %}">
+                    <img id="back-to-profile" class="delete-img" src="{% static 'images/left.png' %}" alt="delete button">
+                </a>
+            </div>
+        </div>
+    </section>
+
+{% else %}
+    <h1 style="color: #000000; font-size: 51px">You are not authenticated!</h1>
+{% endif %}
+
+{% endblock %}

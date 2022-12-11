@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import "register.css";
+
+
+body {
+    background-size: cover;
+    background: #ceffee;
+    position: sticky;
+    top: 10px;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-family: cursive;
+    font-style: oblique;
+}
+
+nav {
+    background: #0f77be;
+    height: 15%;
+    position: relative;
+    bottom: 20px;
+
+}
+
+#slideImage {
+    max-width: 100%;
+    height: 100%;
+}
+
+/*#slideShow {*/
+/*    background-repeat: no-repeat;*/
+/*    background-attachment: fixed;*/
+/*    background-size: 100%;*/
+/*    border-top-width: 10px;*/
+/*    top: 10px;*/
+/*}*/
+
+#fastButtons {
+
+}
+
+
+#loginPage {
+    padding-top: 5%;
+}
+
+
+ul.first {
+    display: block;
+}
+
+form.submit-form {
+    position: center;
+    top: 50px;
+}
+
+.submit-search {
+    overflow: hidden;
+    background-color: white;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    font-size: 20px;
+    width: 500px;
+    position: absolute;
+    left: 600px;
+    top: 23px;
+    display: block;
+}
+
+
+.submit-search:hover {
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+nav ul.first form input [type=text] {
+    border: none;
+    color: rebeccapurple;
+}
+
+.submit-form {
+    display: block;
+}
+
+.submit-btn{
+    background-color: #a9d039;
+    width: 75px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    position: absolute;
+    left: 1025px;
+    top: 23px;
+    font-size: 13px;
+    color: white;
+    display: block;
+}
+
+.submit-btn:hover {
+    background-color: #90ad3b;
+    color: white;
+}
+li.img,
+head ul li a {
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    font-size: 30px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+/*nav ul li,*/
+/*nav ul li a {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    list-style: none;*/
+/*    font-size: 30px;*/
+/*    padding: 5px;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+nav ul li.right {
+    position: absolute;
+    right: 5px;
+}
+
+nav ul li.right a {
+    font-size: 18px;
+    margin: 0 auto;
+}
+
+li.img {
+    margin-top: 1px;
+    display: block;
+}
+
+.logo-birds {
+    padding: 15px;
+    line-height: 75px;
+    text-decoration: none;
+    color: white;
+    top: 50px;
+}
+
+.logo-birds:hover{
+    text-decoration: none;
+    color: white;
+}
+
+ul.second {
+    position: absolute;
+    right: 10px;
+    top: 1px;
+    font-size: 18px;
+    size: 18px;
+}
+
+ul.second a:hover {
+    text-decoration: underline;
+    color: #a9d039
+}
+
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #0f77be;
+    border: none;
+    color: white;
+    padding: 10px 52px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+
+    /*background-color: #0f77be;*/
+    /*text-align-last: center;*/
+    /*color: white;*/
+    /*padding: 10px 100px;*/
+    /*width: 100px;*/
+    /*font-size: 18px;*/
+    /*border: none;*/
+    /*display: inline-block;*/
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 152px;
+    /*min-width: 100px;*/
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-size: 19px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #a9d039;}
+
+
+ul.second a.sign-in {
+    position: center;
+    right: 100px;
+    margin: 0 auto;
+    font-size: 18px;
+    padding: 10px;
+    top: 1px;
+}
+
+ul.second a.register {
+    position: center;
+    right: 10px;
+    font-size: 18px;
+    padding: 10px;
+    top: 1px;
+}
+
+
+nav ul button {
+
+}
+
+div.owl-stage-outer {
+    display: block;
+    position: relative;
+    height: 3%;
+    bottom: 3%;
+}
+
+div li.items{
+    background: #004f84;
+}
+
+div li.items {
+    list-style-type: none;
+    text-align: center;
+}
+
+div li a{
+    list-style-type: none;
+    line-height: 1em;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+div li a:hover {
+    text-decoration: underline;
+    color: #a9d039;
+}
+
+div.background img {
+    width: 100%;
+    height: 75%;
+}
+
+button.fast-button-first {
+    background-color: #a9d039;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    border: none;
+    font-size: 18px;
+    padding: 5px 18px;
+    position: absolute;
+    left: 43%;
+    width: 12%;
+    top: 78%;
+    color: white;
+    display: block;
+}
+
+button.fast-button-first:hover {
+    background-color: darkred;
+    /*background-color: #90ad3b;*/
+    color: white;
+}
+
+div.black-field-first {
+    color: white;
+    position: absolute;
+    text-align: center;
+    top: 72%;
+    left: 45%;
+    font-size: 18px;
+    display: block;
+}
+
+button.fast-button-second {
+    background-color: #a9d039;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    border: none;
+    font-size: 17px;
+    padding: 5px 18px;
+    position: absolute;
+    left: 43%;
+    width: 12%;
+    top: 78%;
+    color: white;
+    display: block;
+}
+
+button.fast-button-second:hover {
+    background-color: darkred;
+    color: white;
+    position: absolute;
+    display: block;
+}
+
+div.black-field-second {
+    color: white;
+    position: absolute;
+    text-align: center;
+    top: 72%;
+    left: 44%;
+    font-size: 18px;
+    display: block;
+}
+
+
+
+
+.container {
+    position: relative;
+}
+
+.container-absolute {
+    position: absolute;
+    top: 70%;
+    left: 37%;
+    text-align: center;
+    opacity: 0.5;
+
+}
+
+img.black-field {
+    position: relative;
+    width: 400px;
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+}
+
+/*#slideShow {*/
+/*    background-repeat: no-repeat;*/
+/*    background-attachment: fixed;*/
+/*    background-size: 100%;*/
+/*    border-top-width: 10px;*/
+/*    padding-top: -10px;*/
+/*}*/
+
+div.slideshow-container {
+
+}
+
+#welcomePage {
+    float: left;
+    width: 50%;
+    color: #45a29e;
+    font-size: 24px;
+    padding: 30px;
+    margin: 10px;
+}
+
+.welcome-message {
+    width: 100%;
+    padding: 45px;
+    color: #030303;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+.card-box {
+    box-shadow: 0 0 30px 0;
+    padding: 20px;
+    margin-left: 120px;
+    background-position: right 35% bottom 45%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    float: left;
+    height: 380px;
+    color: #130d0d;
+    font-weight: bold;
+    margin-bottom: 70px;
+    margin-top: 20px;
+
+}
+
+#catalogPage h1{
+    color: black;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 26px;
+    font-family: 'Lato', serif;
+}
+
+.card-box > img {
+    display: block;
+    width: 250px;
+    height: 150px;
+    border-radius: 15px;
+
+}
+
+.btn-group {
+    margin: 20px auto 0;
+}
+
+#catalogPage > p {
+    font-size: 40px;
+    color: #45a29e;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 30px;
+    text-shadow: 2px 2px black solid;
+}
+
+#detailsButton {
+    position: relative;
+    padding: 5px 20px;
+    left: 70px;
+    bottom: -3px;
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color: #a9d039;
+    color: #ffffff;
+    font-size: 21px;
+    font-family:  Arial,Helvetica,sans-serif;
+    border-radius: 12px;
+    text-align: center;
+}
+
+#detailsButton:hover {
+    background-color: darkred;
+    color: white;
+}
+
+footer {
+    margin-top: auto;
+    background: #0f77be;
+    height: 10%;
+    width: 100%;
+    /*text-decoration: overline;*/
+    /*text-decoration-color: #a9d039;*/
+    /*text-decoration-thickness: 10%;*/
+}
+
+footer div {
+    position: absolute;
+    right: 700px;
+    bottom: 44px;
+    text-align: center;
+    color: white;
+    text-decoration: overline;
+    text-decoration-color: #a9d039;
+    text-decoration-thickness: 10%;
+}

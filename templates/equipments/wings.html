@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <section id="catalogPage">
+    {% if profile.username %}
+    <div class="btn-group">
+        <a id="detailsButton"  href="{% url 'wings add' %}" >Add Wing</a>
+    </div>
+    {% endif %}
+
+        {% if wings %}
+            <h1>All Wings</h1>
+            {% for wing in wings %}
+                <div class="card-box">
+                    <img src="{{ wing.image_url }}" alt="{{ album.album_name }}">
+                    <div>
+                        <div class="text-center">
+                            <p class="name">Manufacturer: {{ wing.manufacturer }}</p>
+                            <p class="artist">Model: {{ wing.model }}</p>
+                            <p class="genre">Certification: {{ wing.en_certification }}</p>
+                            <p class="price">Price: ${{ wing.price|floatformat:2 }}</p>
+                        </div>
+                        <div class="btn-group">
+                            <a id="detailsButton" href="{% url 'wing details' pk=wing.pk %}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+        {% else %}
+            <p>No Wings in Shop!</p>
+        {% endif %}
+
+
+</section>
+
+{% endblock %}

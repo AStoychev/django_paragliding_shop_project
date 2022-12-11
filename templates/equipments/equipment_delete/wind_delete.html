@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+ <style>
+        body {background-color: #ceffee;background-image: url({% static 'images/background-paraglider.jpg' %});
+            background-repeat: no-repeat;background-size: cover;}
+</style>
+
+{% if owner or profile.is_superuser or profile.is_staff %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/delete.css' %}">
+    <div class="form">
+        <form method="POST" action="{% url 'wing delete' pk=wing.pk %}">
+            <a id="deleteText">Are you want to delete</a>
+            <a id="deleteText">{{ wing.manufacturer }} {{ wing.model }}</a>
+            {% csrf_token %}
+            <div id="buttonsForDelete">
+                <button id="deleteCurrentItem" class="delete-wing" type="submit">Yes</button>
+                <button id="deleteCurrentItem" type="submit" formaction="{% url 'wing details' pk=wing.pk %}">No</button>
+            </div>
+        </form>
+    </div>
+
+{% else %}
+    <h1>You are not authenticated!</h1>
+{% endif %}
+
+{% endblock %}

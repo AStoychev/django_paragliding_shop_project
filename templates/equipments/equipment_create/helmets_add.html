@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+ <style>
+        body {background-image: url({% static 'images/background-paraglider.jpg' %});background-repeat: no-repeat;
+            background-size: cover;overflow-x: hidden;}
+</style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+    <h1 id="addWing">Add Helmet</h1>
+    <div class="form">
+        <form method="POST" action="{% url 'helmets add' %}">
+            {{ form }}
+            {% csrf_token %}
+            <input type="submit" value="Create">
+        </form>
+    </div>
+
+
+{% endblock %}

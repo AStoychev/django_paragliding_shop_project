@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
+    <div id="detailsEquipment" class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="card p-4">
+            <div class=" image d-flex flex-column justify-content-center align-items-center">
+                <button class="btn btn-secondary">
+                    <img {{ current_wing.image_url }} height="100" width="100"  alt="" src="{{ current_wing.image_url }}"/>
+                </button>
+
+        <span id="type" class="name mt-3">{{ current_wing.manufacturer }}</span>
+            <br><br>
+                <span id="type" class="idd">{{ current_wing.model }}</span>
+                    {% if profile.is_superuser or profile.is_staff %}
+                        <span id="visibleOwner">
+                            <a id="listUser" href="{% url 'details user' pk=current_wing.user_id %}">Owner: {{ current_wing.user }}</a>
+                        </span>
+                    {% endif %}
+
+            <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+                 <span class="number">{{ current_wing.price|floatformat:2 }}
+                     <span class="follow">$</span>
+                 </span>
+            </div>
+
+            <div class="text mt-3">
+                <span>Certification: {{ current_wing.en_certification }}
+                            <br><br>
+                    Year: {{ current_wing.year }}
+                            <br><br>
+                    Condition: {{ current_wing.condition }}
+                            <br><br>
+                    Test: {{ current_wing.test }}
+                            <br><br>
+                    Porosity: {{ current_wing.porosity }}
+                            <br><br>
+                </span>
+            </div>
+        </div>
+        </div>
+
+    {% if profile.username %}
+        {% if owner or profile.is_superuser or profile.is_staff %}
+            <div class="btn-group">
+                <a id="detailsButton" href="{% url 'wing edit' pk=current_wing.pk %}">Edit</a>
+                <a id="detailsButton" href="{% url 'wing delete' pk=current_wing.pk %}">Delete</a>
+                {% csrf_token %}
+            </div>
+
+        {% elif not owner %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/popup.css' %}">
+            <div class="popup" onclick="myFunction()" >
+{#                <button id="buyButton" type="submit" onclick="accountOrder({{  }} {{ current_wing.price}})">Buy</button>#}
+                <button id="buyButton" type="submit" unicorn:click="add_item({{ current_wing.pk }})">Buy</button>
+                <span class="popuptext" id="myPopup">You buy {{ current_wing.manufacturer }} {{ current_wing.model }}</span>
+                <script src="{% static 'src/popup.js' %}"></script>
+                {% csrf_token %}
+            </div>
+            {% endif %}
+
+    {% else %}
+        {% csrf_token %}
+        <div class="btn-group">
+            <h1 style="padding-right: 94px; color: black">If you want to buy please  <a style="font-size: 30px" id="log-reg" href="{% url 'login user' %}">Log in</a></h1>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

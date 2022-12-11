@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load unicorn %}
+{% load static %}
+{% block content %}
+
+{% unicorn 'equipment' user=request.user.pk products=products %}
+
+{% endblock %}
