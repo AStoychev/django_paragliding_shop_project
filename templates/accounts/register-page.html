@@ -9,55 +9,58 @@
     body {background-image: url({% static 'images/background-paraglider.jpg' %});background-repeat: no-repeat;background-attachment: fixed;
         background-size: 100%;border-top-width: 10px;top: 10px;}
 </style>
+    {% if not have_user %}
+        <div class="container-inline">
+            <section id="welcomePage">
+                <div id="welcome-message">
+                    <h1 class="welcome-message">Welcome Free Man!</h1>
+                    <h1 class="welcome-message">Take a different.</h1>
+                    <h1 class="welcome-message">Route to where you want to go.</h1>
+                <div class="music-img">
+                </div>
+                </div>
 
-    <div class="container-inline">
-        <section id="welcomePage">
-            <div id="welcome-message">
-                <h1 class="welcome-message">Welcome Free Man!</h1>
-                <h1 class="welcome-message">Take a different.</h1>
-                <h1 class="welcome-message">Route to where you want to go.</h1>
-            <div class="music-img">
-            </div>
-            </div>
+            </section>
+        <!-- Registration -->
+            <section id="registerPage">
+                <form method="post" action="{% url 'register user' %}" enctype="multipart/form-data">
+                    <fieldset>
+                        <legend>Register</legend>
+                        <h1 id="register-info" >{{ form.username|placeholder:'Username: '}}</h1>
+                        {% if form.errors.username %}
+                            <h1 style="color: red; font-size: 18px">Username already exist or contains forbidden characters!
+                            This value may contain only letters, numbers, and @/./+/-/_ characters.
+                            </h1>
+                        {% endif %}
+                        <h1 id="register-info" >{{ form.email|placeholder:'Email: '}}</h1>
+                        {% if form.errors.email %}
+                            <h1 style="color: red; font-size: 18px">Email already exist!!</h1>
+                        {% endif %}
+                        <h1 id="register-info" >{{ form.age|placeholder:'Age: '}}</h1>
+                        <h1 id="register-info" >{{ form.country|placeholder:'Country: ' }}</h1>
+                        <h1 id="register-info" >{{ form.image|placeholder:'Image: ' }}</h1>
+                        {% if form.errors.image %}
+                            <h1 style="color: red; font-size: 18px">Image must be under 1.5 MB!</h1>
+                        {% endif %}
+                        <h1 id="register-info" >{{ form.password1|placeholder:'Password: ' }}</h1>
+                        <h1 id="register-info" >{{ form.password2|placeholder:'Repeat password: ' }}</h1>
+                        {% if form.password1 != form.password2 %}
+                        {% if form.errors.password1 or form.errors.password2 %}
+                            <h1 style="color: red; font-size: 18px">Passwords don't match!</h1>
+                        {% endif %}
+                        {% endif %}
+                        {% csrf_token %}
 
-        </section>
-    <!-- Registration -->
-        <section id="registerPage">
-            <form method="post" action="{% url 'register user' %}" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>Register</legend>
-                    <h1 id="register-info" >{{ form.username|placeholder:'Username: '}}</h1>
-                    {% if form.errors.username %}
-                        <h1 style="color: red; font-size: 18px">Username already exist or contains forbidden characters!
-                        This value may contain only letters, numbers, and @/./+/-/_ characters.
-                        </h1>
-                    {% endif %}
-                    <h1 id="register-info" >{{ form.email|placeholder:'Email: '}}</h1>
-                    {% if form.errors.email %}
-                        <h1 style="color: red; font-size: 18px">Email already exist!!</h1>
-                    {% endif %}
-                    <h1 id="register-info" >{{ form.age|placeholder:'Age: '}}</h1>
-                    <h1 id="register-info" >{{ form.country|placeholder:'Country: ' }}</h1>
-                    <h1 id="register-info" >{{ form.image|placeholder:'Image: ' }}</h1>
-                    {% if form.errors.image %}
-                        <h1 style="color: red; font-size: 18px">Image must be under 1.5 MB!</h1>
-                    {% endif %}
-                    <h1 id="register-info" >{{ form.password1|placeholder:'Password: ' }}</h1>
-                    <h1 id="register-info" >{{ form.password2|placeholder:'Repeat password: ' }}</h1>
-                    {% if form.password1 != form.password2 %}
-                    {% if form.errors.password1 or form.errors.password2 %}
-                        <h1 style="color: red; font-size: 18px">Passwords don't match!</h1>
-                    {% endif %}
-                    {% endif %}
-                    {% csrf_token %}
-
-                    <button id="login-register-btn" type="submit" class="register">Register</button>
-                    <div class="second-option">
-                        <p>Have an account? <a id="log-reg" href="{% url 'login user' %}">Log in</a> </p>
-                    </div>
-                </fieldset>
-            </form>
-        </section>
-    </div>
+                        <button id="login-register-btn" type="submit" class="register">Register</button>
+                        <div class="second-option">
+                            <p>Have an account? <a id="log-reg" href="{% url 'login user' %}">Log in</a> </p>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+    {% else %}
+        <meta http-equiv="refresh" content="0; url='/'" />
+    {% endif %}
 
 {% endblock %}
