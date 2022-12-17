@@ -7,42 +7,45 @@
     body {background-image: url({% static 'images/background-paraglider.jpg' %});background-repeat: no-repeat;
         background-attachment: fixed;background-size: 100%;border-top-width: 10px;top: 10px;}
 </style>
+    {% if not have_user %}
+        <div class="bg-img">
+          <form action="{% static 'images/background-paraglider.jpg' %}" class="container">
 
-    <div class="bg-img">
-      <form action="{% static 'images/background-paraglider.jpg' %}" class="container">
+          </form>
+        </div>
+        <div class="container-inline">
+            <section id="welcomePage">
+                <div id="welcome-message">
+                    <h1 class="welcome-message">Welcome Free Man!</h1>
+                    <h1 class="welcome-message">Minds Are Like Parachute.</h1>
+                    <h1 class="welcome-message">They Function Only When Open.</h1>
+                <div class="music-img">
+                </div>
+                </div>
 
-      </form>
-    </div>
-    <div class="container-inline">
-        <section id="welcomePage">
-            <div id="welcome-message">
-                <h1 class="welcome-message">Welcome Free Man!</h1>
-                <h1 class="welcome-message">Minds Are Like Parachute.</h1>
-                <h1 class="welcome-message">They Function Only When Open.</h1>
-            <div class="music-img">
-            </div>
-            </div>
-
-        </section>
-    <!-- Registration -->
-        <section id="loginPage">
-            <form method="post" action="{% url 'login user' %}">
-                <fieldset>
-                    <legend>Log In</legend>
-                    {{ form.username|placeholder:'Username: ' }}
-                    {{ form.password|placeholder:'Password: ' }}
-                    {% csrf_token %}
-                    {% if form.errors %}
-                        <h1 style="color: red; font-size: 18px">Please enter a correct username and password!</h1>
-                    {% endif %}
-                    <input type="hidden" name="next" value="{{ next }}">
-                    <button id="login-register-btn" type="submit" class="Login">Log in</button>
-                     <div class="second-option">
-                        <p>Don't have account? <a id="log-reg" href="{% url 'register user' %}">Register</a> </p>
-                     </div>
-                </fieldset>
-            </form>
-        </section>
-    </div>
+            </section>
+        <!-- Registration -->
+            <section id="loginPage">
+                <form method="post" action="{% url 'login user' %}">
+                    <fieldset>
+                        <legend>Log In</legend>
+                        {{ form.username|placeholder:'Username: ' }}
+                        {{ form.password|placeholder:'Password: ' }}
+                        {% csrf_token %}
+                        {% if form.errors %}
+                            <h1 style="color: red; font-size: 18px">Please enter a correct username and password!</h1>
+                        {% endif %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        <button id="login-register-btn" type="submit" class="Login">Log in</button>
+                         <div class="second-option">
+                            <p>Don't have account? <a id="log-reg" href="{% url 'register user' %}">Register</a> </p>
+                         </div>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+    {% else %}
+            <meta http-equiv="refresh" content="0; url='/'" />
+    {% endif %}
 
 {% endblock %}
