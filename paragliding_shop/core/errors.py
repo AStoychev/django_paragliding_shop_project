@@ -9,4 +9,4 @@ class NotFoundErrorView(views.View):
 
 class InternalErrorView(views.View):
     def get(self, request):
-        return render(request, 'errors/error404.html')
+        return render(request, 'errors/server_error.html')
