@@ -47,6 +47,13 @@ class AllUsers(LoginRequiredMixin, views.ListView):
 class SignInView(auth_views.LoginView):
     template_name = 'accounts/login-page.html'
     success_url = reverse_lazy('dashboard')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['have_user'] = self.request.user.id
+
+        return context
 
 
 class SignUpView(views.CreateView):
@@ -54,6 +61,13 @@ class SignUpView(views.CreateView):
     template_name = 'accounts/register-page.html'
     form_class = UserCreateForm
     success_url = reverse_lazy('index')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['have_user'] = self.request.user.id
+
+        return context
 
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
