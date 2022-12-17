@@ -30,7 +30,9 @@
                     <h1>Age: {{ object.age }}</h1>
                 {% endif %}
                 <h1>Country: {{ object.country }}</h1>
-                <h1>Gender: {{ object.gender }}</h1>
+                {% if object.gender %}
+                    <h1>Gender: {{ object.gender }}</h1>
+                {% endif %}
                 {% csrf_token %}
 
                 {% if is_owner or is_superuser %}
